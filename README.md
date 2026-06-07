@@ -1,47 +1,62 @@
-Yo — this is SysGrid (tiny brain for networks)
+# SysGrid
 
-Short and messy README cuz who reads these properly anyway.
+**A lightweight, in-memory graph topology service built with Spring Boot.**
 
-What it is
-- A lil Spring Boot app that keeps an in-memory graph of `Node`s and `Edge`s.
-- Exposes a daft endpoint to grab the whole graph: GET /api/graph
-- Uses Lombok for model boilerplate so the code stays chill.
+SysGrid is a streamlined application designed to manage and expose system topologies using an in-memory graph structure consisting of `Node` and `Edge` entities. It is ideal for rapid prototyping, mocking network architectures, or testing graph-based logic without the overhead of database configuration.
 
-Why you'd care
-- Wanna mock a system topology quick
-- Wanna play with nodes/edges in memory without DB fuss
+---
 
-Key bits (look if you actually care):
-- SysGrid app entry: [src/main/java/com/sysgrid/SysGridApplication.java](src/main/java/com/sysgrid/SysGridApplication.java)
-- HTTP bits: [src/main/java/com/sysgrid/controller/GraphController.java](src/main/java/com/sysgrid/controller/GraphController.java)
-- Business rules: [src/main/java/com/sysgrid/service/GraphService.java](src/main/java/com/sysgrid/service/GraphService.java)
-- Model: [src/main/java/com/sysgrid/model/Graph.java](src/main/java/com/sysgrid/model/Graph.java)
-- Node & Edge: [src/main/java/com/sysgrid/model/Node.java](src/main/java/com/sysgrid/model/Node.java) and [src/main/java/com/sysgrid/model/Edge.java](src/main/java/com/sysgrid/model/Edge.java)
+## 🚀 Key Features
 
-Running it (fast):
-1. Make sure Java is set up
-2. From repo root run:
+* **In-Memory Data Store:** Fast, volatile storage for graph operations, perfect for local development and testing.
+* **RESTful API:** Exposes endpoints to retrieve and interact with the network topology.
+* **Zero Configuration:** No database setup, authentication, or external dependencies required.
+* **Clean Architecture:** Built with Spring Boot and utilizes Lombok to reduce boilerplate code and maintain readability.
+
+## 📂 Project Structure
+
+The application follows a standard Spring Boot architectural pattern. Key components include:
+
+* **Entry Point:** [`SysGridApplication.java`](https://www.google.com/search?q=src/main/java/com/sysgrid/SysGridApplication.java)
+* **API Layer:** [`GraphController.java`](https://www.google.com/search?q=src/main/java/com/sysgrid/controller/GraphController.java) handles incoming HTTP requests.
+* **Business Logic:** [`GraphService.java`](https://www.google.com/search?q=src/main/java/com/sysgrid/service/GraphService.java) manages the creation, deletion, and retrieval of nodes and edges.
+* **Domain Models:** * [`Graph.java`](https://www.google.com/search?q=src/main/java/com/sysgrid/model/Graph.java)
+* [`Node.java`](https://www.google.com/search?q=src/main/java/com/sysgrid/model/Node.java)
+* [`Edge.java`](https://www.google.com/search?q=src/main/java/com/sysgrid/model/Edge.java)
+
+
+
+## 🛠️ Getting Started
+
+### Prerequisites
+
+* Java Development Kit (JDK) installed (Java 17 or higher recommended).
+* An IDE with Lombok plugin support enabled.
+
+### Running the Application
+
+You can start the application directly from the repository root using the Gradle Wrapper:
 
 ```bash
 ./gradlew bootRun
+
 ```
 
-3. Then hit:
+### Verifying the Setup
+
+Once the application is running, you can retrieve the current graph topology by hitting the exposed endpoint. Open a new terminal window and execute:
 
 ```bash
 curl -s http://localhost:8080/api/graph | jq
+
 ```
 
-Notes & quirks
-- This thing stores the graph in memory — restart and poof, it's gone.
-- Lombok is used, so your IDE should have the Lombok plugin or stuff might look weird.
-- No auth, no DB, no persistence — it's intentionally dumb and simple.
+## ⚙️ Development Notes
 
-Wanna add stuff?
-- Add endpoints in `GraphController` and call `GraphService`.
-- Service already has helpers to create/remove nodes and edges.
+* **Volatility:** Because the data is stored in memory, all nodes and edges will be cleared upon application restart.
+* **Lombok Requirement:** Ensure your IDE is configured to support Lombok annotations to prevent compilation warnings or errors in your editor.
+* **Extensibility:** To expand the application's capabilities, add new route handlers in `GraphController` and implement the corresponding business logic in `GraphService`. The service layer already contains helper methods for basic node and edge management.
 
-License / vibes
-- Do whatever. This repo is chill. Don't sue me if it misbehaves.
+## 📄 License
 
-If you want a less lazy README, lemme know and I'll make it proper.
+This project is open-source and provided "as-is". You are free to use, modify, and distribute the code for personal or commercial purposes.
