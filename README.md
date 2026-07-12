@@ -60,3 +60,47 @@ curl -s http://localhost:8080/api/graph | jq
 ## 📄 License
 
 This project is open-source and provided "as-is". You are free to use, modify, and distribute the code for personal or commercial purposes.
+
+```
+SysGrid
+├─ .DS_Store
+├─ README.md
+├─ gradle
+│  └─ wrapper
+│     ├─ gradle-wrapper.jar
+│     └─ gradle-wrapper.properties
+├─ gradlew
+├─ gradlew.bat
+└─ src
+   ├─ main
+   │  ├─ java
+   │  │  └─ com
+   │  │     └─ sysgrid
+   │  │        ├─ SysGridApplication.java
+   │  │        ├─ controller
+   │  │        │  └─ GraphController.java
+   │  │        ├─ dto
+   │  │        │  ├─ CreateEdgeRequest.java
+   │  │        │  ├─ CreateNodeRequest.java
+   │  │        │  └─ GraphResponse.java
+   │  │        ├─ exceptions
+   │  │        │  ├─ GlobalExceptionHandler.java
+   │  │        │  └─ NodeNotFoundException.java
+   │  │        ├─ model
+   │  │        │  ├─ Edge.java
+   │  │        │  ├─ Graph.java
+   │  │        │  ├─ Node.java
+   │  │        │  ├─ NodeStatus.java
+   │  │        │  └─ NodeType.java
+   │  │        └─ service
+   │  │           └─ GraphService.java
+   │  └─ resources
+   │     └─ application.properties
+   └─ test
+      └─ java
+         └─ com
+            └─ sysgrid
+               └─ SysGrid
+                  └─ SysGridApplicationTests.java
+
+```
