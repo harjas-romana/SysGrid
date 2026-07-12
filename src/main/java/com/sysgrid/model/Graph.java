@@ -1,24 +1,40 @@
 package com.sysgrid.model;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Graph {
-
-    private List<Node> nodes;
-    private List<Edge> edges;
+    private final Map<UUID, Node> nodes;
+    private final Map<UUID, Edge> edges;
 
     public Graph() {
-        this.nodes = new ArrayList<>();
-        this.edges = new ArrayList<>();
+        this.nodes = new ConcurrentHashMap<>();
+        this.edges = new ConcurrentHashMap<>();
     }
 
-    public List<Node> getNodes() {
-        return Collections.unmodifiableList(nodes);
+    public Map<UUID, Node> getNodes() {
+        return Collections.unmodifiableMap(nodes);
     }
 
-    public List<Edge> getEdges() {
-        return Collections.unmodifiableList(edges);
+    public Map<UUID, Edge> getEdges() {
+        return Collections.unmodifiableMap(edges);
+    }
+
+    public void addNode(Node node) {
+        nodes.put(node.getId(), node);
+    }
+
+    public void removeNode(UUID id) {
+        nodes.remove(id);
+    }
+
+    public void addEdge(Edge edge) {
+        edges.put(edge.getId(), edge);
+    }
+
+    public void removeEdge(UUID id) {
+        edges.remove(id);
     }
 }
