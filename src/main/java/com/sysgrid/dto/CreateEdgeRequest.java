@@ -1,13 +1,15 @@
 package com.sysgrid.dto;
 
-import java.util.UUID;
-
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+
+import java.util.UUID;
 
 @Data
 public class CreateEdgeRequest {
-
+    @NotNull(message = "Source ID cannot be null")
     private UUID sourceId;
-    private UUID targetId;
 
+    @NotNull(message = "Target ID cannot be null")
+    private UUID targetId;
 }
