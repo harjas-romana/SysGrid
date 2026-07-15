@@ -1,0 +1,3 @@
+@import "tailwindcss";
+/* At the very top of your global CSS file, after @tailwind directives */
+@import "@xyflow/react/dist/style.css";
